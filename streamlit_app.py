@@ -53,18 +53,9 @@ if ingredients_list:
     # st.stop()
     time_to_insert = st.button('Submit Order')
 
-
-    if "order_submitted" not in st.session_state:
-        st.session_state.order_submitted = False
-
-    if st.button('Submit Order') and not st.session_state.order_submitted:
-        session.sql(my_insert_stmt).collect()  # Execute insert query
-        st.session_state.order_submitted = True  # Mark as submitted
+    if ingredients_string:
+        session.sql(my_insert_stmt).collect()
         st.success('Your Smoothie is ordered!', icon="✅")
-        
-    # if ingredients_string:
-    #     session.sql(my_insert_stmt).collect()
-    #     st.success('Your Smoothie is ordered!', icon="✅")
 
 
 
