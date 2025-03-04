@@ -3,9 +3,6 @@ import streamlit as st
 from snowflake.snowpark.functions import col
 # from snowflake.snowpark.context import get_active_session
 
-import requests
-smoothiefroot_response = requests.get("https://my.smoothiefroot.com/api/fruit/watermelon")
-st.text(smoothiefroot_response)
 
 # cnx = st.connection("Snowflake")
 # session =cnx.session()
@@ -55,6 +52,10 @@ if ingredients_list:
         session.sql(my_insert_stmt).collect()
         st.success('Your Smoothie is ordered!', icon="✅")
 
+
+import requests
+smoothiefroot_response = requests.get("https://my.smoothiefroot.com/api/fruit/watermelon")
+st.text(smoothiefroot_response.json())
     
 
 
