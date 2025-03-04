@@ -5,10 +5,6 @@ from snowflake.snowpark.functions import col
 import requests
 import pandas as pd_df
 
-
-# cnx = st.connection("Snowflake")
-# session =cnx.session()
-
 # Write directly to the app
 st.title("Example Streamlit App :balloon:")
 st.write(
@@ -24,8 +20,10 @@ st.write("Name of the smoothie will be: ", name_on_order)
 cnx = st.connection("snowflake")
 session =cnx.session()
 
-my_dataframe = session.table("smoothies.public.fruit_options").select(col('Fruit_name'))
+my_dataframe = session.table("smoothies.public.fruit_options").select(col('Fruit_name'),col ('SEARCH_ON'))
 # st.dataframe(data=my_dataframe, use_container_width=True)
+
+# ----------comment
 
 pd_df= my_dataframe.to_pandas()
 
